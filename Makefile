@@ -10,7 +10,9 @@ SRCS	= push_swap.c \
 		  ft_swap.c \
 		  ft_push.c \
 		  ft_rotate.c \
-		  ft_reverse_rotate.c
+		  ft_reverse_rotate.c \
+		  ft_printf_utilities.c \
+		  ft_printf_ptr.c
 
 OBJS	= $(SRCS:.c=.o)
 

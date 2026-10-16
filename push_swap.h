@@ -6,7 +6,7 @@
 /*   By: mdass-ka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 17:46:22 by mdass-ka          #+#    #+#             */
-/*   Updated: 2026/10/14 18:27:23 by mdass-ka         ###   ########.fr       */
+/*   Updated: 2026/10/16 18:03:57 by mdass-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdarg.h>
 
 typedef struct s_stack
 {
@@ -40,5 +41,7 @@ void	free_split(char **tab);
 int		stack_add_back(t_stack **stack, int value);
 int		stack_contains(t_stack *stack, int value);
 void	stack_free(t_stack **stack);
+
+int		ft_printf(const char *str, ...);
 
 #endif
