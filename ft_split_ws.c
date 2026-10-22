@@ -17,7 +17,7 @@ static int	is_sep(char chr)
 	return (chr == ' ' || (chr >= '\t' && chr <= '\r'));
 }
 
-static int	count_words(char *str)
+int	count_words(char *str)
 {
 	int	count;
 

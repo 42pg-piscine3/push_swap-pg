@@ -44,7 +44,7 @@ static int	token_to_int(char *str, int *out)
 	return (1);
 }
 
-static int	add_tokens(char **tab, t_stack **stack)
+static int	add_tokens(char **tab, t_stack *stack)
 {
 	int	value;
 	int	idx;
@@ -54,7 +54,7 @@ static int	add_tokens(char **tab, t_stack **stack)
 	{
 		if (!token_to_int(tab[idx], &value))
 			return (0);
-		if (stack_contains(*stack, value))
+		if (stack_contains(stack, value))
 			return (0);
 		if (!stack_add_back(stack, value))
 			return (0);
@@ -63,11 +63,7 @@ static int	add_tokens(char **tab, t_stack **stack)
 	return (1);
 }
 
-/*
-** Splits one argument into tokens and adds them to the stack.
-** An argument with no tokens ("" or "   ") is an error.
-*/
-static int	parse_arg(char *arg, t_stack **stack)
+static int	parse_arg(char *arg, t_stack *stack)
 {
 	char	**tab;
 	int		valid;
@@ -75,15 +71,40 @@ static int	parse_arg(char *arg, t_stack **stack)
 	tab = split_ws(arg);
 	if (!tab)
 		return (0);
-	valid = tab[0] && add_tokens(tab, stack);
+	valid = add_tokens(tab, stack);
 	free_split(tab);
 	return (valid);
 }
 
-int	parse_args(int argc, char **argv, t_stack **stack)
+/*
+** Total token count across all arguments, so the stack can be allocated
+** once. An argument with no tokens ("" or "   ") is an error: returns 0.
+*/
+static int	count_tokens(int argc, char **argv)
+{
+	int	total;
+	int	words;
+	int	idx;
+
+	total = 0;
+	idx = 1;
+	while (idx < argc)
+	{
+		words = count_words(argv[idx]);
+		if (words == 0)
+			return (0);
+		total += words;
+		idx++;
+	}
+	return (total);
+}
+
+int	parse_args(int argc, char **argv, t_stack *stack)
 {
 	int	idx;
 
+	if (!stack_init(stack, count_tokens(argc, argv)) || stack->cap == 0)
+		return (0);
 	idx = 1;
 	while (idx < argc)
 	{

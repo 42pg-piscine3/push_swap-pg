@@ -12,32 +12,31 @@
 
 #include "push_swap.h"
 
-static void	swap(t_stack **stack)
+static void	swap(t_stack *stack)
 {
-	t_stack	*first;
-	t_stack	*second;
+	int	second;
+	int	tmp;
 
-	if (!stack || !*stack || !(*stack)->next)
+	if (stack->size < 2)
 		return ;
-	first = *stack;
-	second = first->next;
-	first->next = second->next;
-	second->next = first;
-	*stack = second;
+	second = (stack->head + 1) % stack->cap;
+	tmp = stack->data[stack->head];
+	stack->data[stack->head] = stack->data[second];
+	stack->data[second] = tmp;
 }
 
-void	sa(t_stack **stack_a)
+void	sa(t_stack *stack_a)
 {
 	swap(stack_a);
 }
 
-void	sb(t_stack **stack_b)
+void	sb(t_stack *stack_b)
 {
-    swap(stack_b);
+	swap(stack_b);
 }
 
-void    ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack *stack_a, t_stack *stack_b)
 {
-    swap(stack_a);
-    swap(stack_b);
+	swap(stack_a);
+	swap(stack_b);
 }

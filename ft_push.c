@@ -12,24 +12,24 @@
 
 #include "push_swap.h"
 
-static void	push(t_stack **dest, t_stack **src)
+/* dest->cap is the total count, so dest always has room. */
+static void	push(t_stack *dest, t_stack *src)
 {
-	t_stack	*node_to_move;
-
-	if (!src || !*src)
+	if (src->size == 0)
 		return ;
-	node_to_move = *src;
-	*src = (*src)->next;
-	node_to_move->next = *dest;
-	*dest = node_to_move;
+	dest->head = (dest->head - 1 + dest->cap) % dest->cap;
+	dest->data[dest->head] = src->data[src->head];
+	dest->size++;
+	src->head = (src->head + 1) % src->cap;
+	src->size--;
 }
 
-void	pa(t_stack **stack_a, t_stack **stack_b)
+void	pa(t_stack *stack_a, t_stack *stack_b)
 {
 	push(stack_a, stack_b);
 }
 
-void	pb(t_stack **stack_a, t_stack **stack_b)
+void	pb(t_stack *stack_a, t_stack *stack_b)
 {
-    push(stack_b, stack_a);
+	push(stack_b, stack_a);
 }

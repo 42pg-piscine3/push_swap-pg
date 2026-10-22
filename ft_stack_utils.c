@@ -12,47 +12,47 @@
 
 #include "push_swap.h"
 
-int	stack_add_back(t_stack **stack, int value)
+int	stack_init(t_stack *stack, int cap)
 {
-	t_stack	*node;
-	t_stack	*last;
+	stack->head = 0;
+	stack->size = 0;
+	stack->cap = cap;
+	stack->data = malloc(sizeof(int) * cap);
+	return (stack->data != NULL);
+}
 
-	node = malloc(sizeof(t_stack));
-	if (!node)
+/* Value at position pos from the top (0 is the top). */
+int	stack_at(t_stack *stack, int pos)
+{
+	return (stack->data[(stack->head + pos) % stack->cap]);
+}
+
+int	stack_add_back(t_stack *stack, int value)
+{
+	if (stack->size == stack->cap)
 		return (0);
-	node->value = value;
-	node->next = NULL;
-	if (!*stack)
-	{
-		*stack = node;
-		return (1);
-	}
-	last = *stack;
-	while (last->next)
-		last = last->next;
-	last->next = node;
+	stack->data[(stack->head + stack->size) % stack->cap] = value;
+	stack->size++;
 	return (1);
 }
 
 int	stack_contains(t_stack *stack, int value)
 {
-	while (stack)
+	int	pos;
+
+	pos = 0;
+	while (pos < stack->size)
 	{
-		if (stack->value == value)
+		if (stack_at(stack, pos) == value)
 			return (1);
-		stack = stack->next;
+		pos++;
 	}
 	return (0);
 }
 
-void	stack_free(t_stack **stack)
+void	stack_free(t_stack *stack)
 {
-	t_stack	*next;
-
-	while (*stack)
-	{
-		next = (*stack)->next;
-		free(*stack);
-		*stack = next;
-	}
+	free(stack->data);
+	stack->data = NULL;
+	stack->size = 0;
 }

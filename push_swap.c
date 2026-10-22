@@ -14,17 +14,22 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
+	t_stack	stack_a;
+	t_stack	stack_b;
 
-	stack_a = NULL;
+	stack_a.data = NULL;
+	stack_b.data = NULL;
 	if (argc < 2)
 		return (0);
-	if (!parse_args(argc, argv, &stack_a))
+	if (!parse_args(argc, argv, &stack_a)
+		|| !stack_init(&stack_b, stack_a.cap))
 	{
 		stack_free(&stack_a);
+		stack_free(&stack_b);
 		write(2, "Error\n", 6);
 		return (1);
 	}
 	stack_free(&stack_a);
+	stack_free(&stack_b);
 	return (0);
 }

@@ -10,37 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
-static void	reverse_rotate(t_stack **stack)
+/* Step head back one slot, then copy the bottom into it. */
+static void	reverse_rotate(t_stack *stack)
 {
-    t_stack	*last;
-    t_stack	*second_last;
-
-    if (!stack || !*stack || !(*stack)->next)
-        return ;
-    second_last = *stack;
-    while (second_last->next->next)
-        second_last = second_last->next;
-    last = second_last->next;
-    second_last->next = NULL;
-    last->next = *stack;
-    *stack = last;
+	if (stack->size < 2)
+		return ;
+	stack->head = (stack->head - 1 + stack->cap) % stack->cap;
+	stack->data[stack->head]
+		= stack->data[(stack->head + stack->size) % stack->cap];
 }
 
-void	rra(t_stack **stack_a)
+void	rra(t_stack *stack_a)
 {
-    reverse_rotate(stack_a);
+	reverse_rotate(stack_a);
 }
 
-void	rrb(t_stack **stack_b)
+void	rrb(t_stack *stack_b)
 {
-    reverse_rotate(stack_b);
+	reverse_rotate(stack_b);
 }
 
-void	rrr(t_stack **stack_a, t_stack **stack_b)
+void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
-    reverse_rotate(stack_a);
-    reverse_rotate(stack_b);
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
 }
