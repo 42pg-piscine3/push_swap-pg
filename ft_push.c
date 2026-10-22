@@ -12,15 +12,31 @@
 
 #include "push_swap.h"
 
+/* Unlinks the top node of *stack and returns it. */
+static t_stack	*detach_top(t_stack **stack)
+{
+	t_stack	*node;
+
+	node = *stack;
+	if (node->next == node)
+		*stack = NULL;
+	else
+	{
+		node->prev->next = node->next;
+		node->next->prev = node->prev;
+		*stack = node->next;
+	}
+	return (node);
+}
+
 static void	push(t_stack **dest, t_stack **src)
 {
 	t_stack	*node_to_move;
 
 	if (!src || !*src)
 		return ;
-	node_to_move = *src;
-	*src = (*src)->next;
-	node_to_move->next = *dest;
+	node_to_move = detach_top(src);
+	stack_link(dest, node_to_move);
 	*dest = node_to_move;
 }
 

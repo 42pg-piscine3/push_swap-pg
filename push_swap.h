@@ -19,6 +19,7 @@
 typedef struct s_stack
 {
 	int				value;
+	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -37,6 +38,7 @@ void	rrr(t_stack **stack_a, t_stack **stack_b);
 int		parse_args(int argc, char **argv, t_stack **stack);
 char	**split_ws(char *str);
 void	free_split(char **tab);
+void	stack_link(t_stack **stack, t_stack *node);
 int		stack_add_back(t_stack **stack, int value);
 int		stack_contains(t_stack *stack, int value);
 void	stack_free(t_stack **stack);
