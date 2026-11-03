@@ -11,10 +11,12 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h> //TODO: REMOVE!!!!!!!!!!!!!!!!!!!
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
+	double chaos = 0;
 
 	stack_a = NULL;
 	if (argc < 2)
@@ -25,6 +27,10 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (1);
 	}
+
+	chaos = compute_disorder(stack_a);
+	printf("\nDisorder = %f\n", chaos);
+
 	stack_free(&stack_a);
 	return (0);
 }

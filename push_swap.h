@@ -23,6 +23,8 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+double	compute_disorder(t_stack *stack_a);
+
 void	sa(t_stack **stack_a);
 void	sb(t_stack **stack_b);
 void	ss(t_stack **stack_a, t_stack **stack_b);
