@@ -6,7 +6,7 @@
 /*   By: mdass-ka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 18:11:15 by mdass-ka          #+#    #+#             */
-/*   Updated: 2026/10/14 18:28:20 by mdass-ka         ###   ########.fr       */
+/*   Updated: 2026/11/03 13:59:06 by mdass-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
-    push(stack_b, stack_a);
+	push(stack_b, stack_a);
 }
