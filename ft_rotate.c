@@ -6,7 +6,7 @@
 /*   By: mdass-ka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 18:19:07 by mdass-ka          #+#    #+#             */
-/*   Updated: 2026/11/03 15:05:50 by mdass-ka         ###   ########.fr       */
+/*   Updated: 2026/11/04 13:08:05 by mdass-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,18 @@ static void	rotate(t_stack **stack)
 void	ra(t_stack **stack_a)
 {
 	rotate(stack_a);
+	ft_printf("ra\n");
 }
 
 void	rb(t_stack **stack_b)
 {
 	rotate(stack_b);
+	ft_printf("rb\n");
 }
 
 void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);
+	ft_printf("rr\n");
 }

@@ -1,7 +1,7 @@
 NAME	= push_swap
 
 CC		= cc
-CFLAGS	= -Wall -Wextra
+CFLAGS	= -Wall -Wextra -Werror
 
 SRCS	= push_swap.c \
 		  ft_parse.c \
@@ -11,10 +11,13 @@ SRCS	= push_swap.c \
 		  ft_push.c \
 		  ft_rotate.c \
 		  ft_reverse_rotate.c \
-		  ft_printf.c \
 		  ft_printf_utilities.c \
 		  ft_printf_ptr.c \
-		  ft_disorder.c
+		  ft_printf.c \
+		  ft_disorder.c \
+		  ft_stack_size.c \
+		  ft_sort.c \
+		  ft_printf_double.c
 
 OBJS	= $(SRCS:.c=.o)
 

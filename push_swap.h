@@ -6,7 +6,7 @@
 /*   By: mdass-ka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 17:46:22 by mdass-ka          #+#    #+#             */
-/*   Updated: 2026/10/16 18:03:57 by mdass-ka         ###   ########.fr       */
+/*   Updated: 2026/11/04 13:06:25 by mdass-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_stack
 }	t_stack;
 
 double	compute_disorder(t_stack *stack_a);
+int		stack_size(t_stack *stack);
 
 void	sa(t_stack **stack_a);
 void	sb(t_stack **stack_b);
@@ -44,6 +45,15 @@ int		stack_add_back(t_stack **stack, int value);
 int		stack_contains(t_stack *stack, int value);
 void	stack_free(t_stack **stack);
 
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_putnbr(int nb);
+int		ft_put_unsigned_nbr(unsigned int n);
+int		ft_puthex(unsigned int n, int is_upper);
+int		ft_putptr(void *ptr);
+int		ft_putdouble(double num, int precision);
 int		ft_printf(const char *str, ...);
+
+void	sort_three(t_stack **stack_a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mdass-ka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/16 16:46:17 by mdass-ka          #+#    #+#             */
-/*   Updated: 2026/10/16 18:03:57 by mdass-ka         ###   ########.fr       */
+/*   Updated: 2026/11/04 12:39:51 by mdass-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static int	ft_handle_format(char format, va_list args)
 		i += ft_puthex(va_arg(args, int), 1);
 	else if (format == '%')
 		i += ft_putchar('%');
+	else if (format == 'f')
+		i += ft_putdouble(va_arg(args, double), 6);
 	return (i);
 }
 

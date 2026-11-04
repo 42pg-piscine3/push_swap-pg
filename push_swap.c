@@ -6,17 +6,17 @@
 /*   By: mdass-ka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 15:41:28 by joshtan           #+#    #+#             */
-/*   Updated: 2026/10/16 18:03:57 by mdass-ka         ###   ########.fr       */
+/*   Updated: 2026/11/04 13:06:19 by mdass-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h> //TODO: REMOVE!!!!!!!!!!!!!!!!!!!
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	double chaos = 0;
+	int		size = 0;
 
 	stack_a = NULL;
 	if (argc < 2)
@@ -29,8 +29,10 @@ int	main(int argc, char **argv)
 	}
 
 	chaos = compute_disorder(stack_a);
-	printf("\nDisorder = %f\n", chaos);
-
+	size = stack_size(stack_a);
+	sort_three(&stack_a);
+	ft_printf("\nDisorder = %f\n", chaos);
+	ft_printf("Size = %d\n", size);
 	stack_free(&stack_a);
 	return (0);
 }
