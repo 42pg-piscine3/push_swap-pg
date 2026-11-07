@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	run_strategy(t_params *params, double disorder, t_stack **stack_a,
+static void	run_strategy(t_params *params, t_stack **stack_a,
 		t_stack **stack_b)
 {
 	if (params->strategy == STRAT_SIMPLE)
@@ -22,7 +22,7 @@ static void	run_strategy(t_params *params, double disorder, t_stack **stack_a,
 	else if (params->strategy == STRAT_COMPLEX)
 		sort_complex(stack_a, stack_b);
 	else
-		sort_adaptive(stack_a, stack_b, disorder);
+		sort_adaptive(stack_a, stack_b);
 }
 
 int	main(int argc, char **argv)
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 	if (stack_a)
 	{
 		disorder = compute_disorder(stack_a);
-		run_strategy(&params, disorder, &stack_a, &stack_b);
+		run_strategy(&params, &stack_a, &stack_b);
 		if (params.bench)
 			print_bench(params.strategy, disorder);
 	}

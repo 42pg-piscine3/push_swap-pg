@@ -67,11 +67,10 @@ void	stack_free(t_stack **stack);
 
 int		ft_printf(const char *str, ...);
 
-char	*strategy_label(t_strategy strategy, double disorder);
 void	sort_simple(t_stack **stack_a, t_stack **stack_b);
 void	sort_medium(t_stack **stack_a, t_stack **stack_b);
 void	sort_complex(t_stack **stack_a, t_stack **stack_b);
-void	sort_adaptive(t_stack **stack_a, t_stack **stack_b, double disorder);
+void	sort_adaptive(t_stack **stack_a, t_stack **stack_b);
 void	print_bench(t_strategy strategy, double disorder);
 
 #endif
