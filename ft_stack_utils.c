@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42penang.edu.m    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 16:30:00 by joshtan           #+#    #+#             */
-/*   Updated: 2026/10/15 16:30:00 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/11/06 12:39:17 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	stack_add_back(t_stack **stack, int value)
 	return (1);
 }
 
+//
 int	stack_contains(t_stack *stack, int value)
 {
 	while (stack)

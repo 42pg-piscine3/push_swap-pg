@@ -6,31 +6,48 @@
 /*   By: mdass-ka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 15:41:28 by joshtan           #+#    #+#             */
-/*   Updated: 2026/10/16 18:03:57 by mdass-ka         ###   ########.fr       */
+/*   Updated: 2026/11/06 13:00:00 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h> //TODO: REMOVE!!!!!!!!!!!!!!!!!!!
+
+static void	run_strategy(t_params *params, double disorder, t_stack **stack_a,
+		t_stack **stack_b)
+{
+	if (params->strategy == STRAT_SIMPLE)
+		sort_simple(stack_a, stack_b);
+	else if (params->strategy == STRAT_MEDIUM)
+		sort_medium(stack_a, stack_b);
+	else if (params->strategy == STRAT_COMPLEX)
+		sort_complex(stack_a, stack_b);
+	else
+		sort_adaptive(stack_a, stack_b, disorder);
+}
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	double chaos = 0;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+	t_params	params;
+	double		disorder;
 
 	stack_a = NULL;
-	if (argc < 2)
-		return (0);
-	if (!parse_args(argc, argv, &stack_a))
+	stack_b = NULL;
+	if (!parse_args(argc, argv, &stack_a, &params))
 	{
 		stack_free(&stack_a);
-		write(2, "Error\n", 6);
+		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
-
-	chaos = compute_disorder(stack_a);
-	printf("\nDisorder = %f\n", chaos);
-
+	if (stack_a)
+	{
+		disorder = compute_disorder(stack_a);
+		run_strategy(&params, disorder, &stack_a, &stack_b);
+		if (params.bench)
+			print_bench(params.strategy, disorder);
+	}
 	stack_free(&stack_a);
+	stack_free(&stack_b);
 	return (0);
 }

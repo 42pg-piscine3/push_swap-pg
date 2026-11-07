@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdass-ka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joshtan <joshtan@student.42penang.edu.m    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 17:46:22 by mdass-ka          #+#    #+#             */
-/*   Updated: 2026/10/16 18:03:57 by mdass-ka         ###   ########.fr       */
+/*   Updated: 2026/11/07 09:46:41 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,34 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdarg.h>
+# include "libft.h"
+# include "libft_ext.h"
+
+// Adaptive strategy disorder thresholds: low < 0.2 <= medium < 0.5 <= high
+# define ADAPTIVE_LOW 0.2
+# define ADAPTIVE_HIGH 0.5
 
 typedef struct s_stack
 {
 	int				value;
 	struct s_stack	*next;
 }	t_stack;
+
+typedef enum e_strategy
+{
+	STRAT_ADAPTIVE,
+	STRAT_SIMPLE,
+	STRAT_MEDIUM,
+	STRAT_COMPLEX
+}	t_strategy;
+
+// Set strategy_set is set once a flag is set. It prevents multiple strategy inputs.
+typedef struct s_params
+{
+	t_strategy	strategy;
+	int			;
+	int			bench;
+}	t_params;
 
 double	compute_disorder(t_stack *stack_a);
 
@@ -37,13 +59,19 @@ void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
 
-int		parse_args(int argc, char **argv, t_stack **stack);
-char	**split_ws(char *str);
-void	free_split(char **tab);
+int		parse_args(int argc, char **argv, t_stack **stack, t_params *params);
+int		parse_flag(char *arg, t_params *params);
 int		stack_add_back(t_stack **stack, int value);
 int		stack_contains(t_stack *stack, int value);
 void	stack_free(t_stack **stack);
 
 int		ft_printf(const char *str, ...);
+
+char	*strategy_label(t_strategy strategy, double disorder);
+void	sort_simple(t_stack **stack_a, t_stack **stack_b);
+void	sort_medium(t_stack **stack_a, t_stack **stack_b);
+void	sort_complex(t_stack **stack_a, t_stack **stack_b);
+void	sort_adaptive(t_stack **stack_a, t_stack **stack_b, double disorder);
+void	print_bench(t_strategy strategy, double disorder);
 
 #endif
