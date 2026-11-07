@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42penang.edu.m    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 16:30:00 by joshtan           #+#    #+#             */
-/*   Updated: 2026/11/06 15:00:00 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/11/07 12:28:16 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	parse_args(int argc, char **argv, t_stack **stack, t_params *params)
 	int	flag;
 
 	params->strategy = STRAT_ADAPTIVE;
-	params->strategy_set = 0;
+	params->flag_strat = 0;
 	params->bench = 0;
 	idx = 1;
 	while (idx < argc)

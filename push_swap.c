@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdass-ka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joshtan <joshtan@student.42penang.edu.m    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 15:41:28 by joshtan           #+#    #+#             */
-/*   Updated: 2026/11/06 13:00:00 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/11/07 12:46:23 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	main(int argc, char **argv)
 	t_stack		*stack_a;
 	t_stack		*stack_b;
 	t_params	params;
-	double		disorder;
+	double chaos = 0;
+	int		size = 0;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -40,13 +41,14 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
-	if (stack_a)
-	{
-		disorder = compute_disorder(stack_a);
-		run_strategy(&params, &stack_a, &stack_b);
-		if (params.bench)
-			print_bench(params.strategy, disorder);
-	}
+	chaos = compute_disorder(stack_a);
+	run_strategy(&params, &stack_a, &stack_b);
+	if (params.bench)
+		print_bench(params.strategy, chaos);
+	size = stack_size(stack_a);
+	sort_three(&stack_a);
+	ft_printf("\nDisorder = %f\n", chaos);
+	ft_printf("Size = %d\n", size);
 	stack_free(&stack_a);
 	stack_free(&stack_b);
 	return (0);

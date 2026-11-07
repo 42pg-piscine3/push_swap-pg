@@ -6,9 +6,10 @@
 /*   By: joshtan <joshtan@student.42penang.edu.m    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 17:46:22 by mdass-ka          #+#    #+#             */
-/*   Updated: 2026/11/07 09:46:41 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/11/07 12:27:16 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -41,11 +42,12 @@ typedef enum e_strategy
 typedef struct s_params
 {
 	t_strategy	strategy;
-	int			;
+	int			flag_strat;
 	int			bench;
 }	t_params;
 
 double	compute_disorder(t_stack *stack_a);
+int		stack_size(t_stack *stack);
 
 void	sa(t_stack **stack_a);
 void	sb(t_stack **stack_b);
@@ -65,6 +67,13 @@ int		stack_add_back(t_stack **stack, int value);
 int		stack_contains(t_stack *stack, int value);
 void	stack_free(t_stack **stack);
 
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_putnbr(int nb);
+int		ft_put_unsigned_nbr(unsigned int n);
+int		ft_puthex(unsigned int n, int is_upper);
+int		ft_putptr(void *ptr);
+int		ft_putdouble(double num, int precision);
 int		ft_printf(const char *str, ...);
 
 void	sort_simple(t_stack **stack_a, t_stack **stack_b);
@@ -72,5 +81,6 @@ void	sort_medium(t_stack **stack_a, t_stack **stack_b);
 void	sort_complex(t_stack **stack_a, t_stack **stack_b);
 void	sort_adaptive(t_stack **stack_a, t_stack **stack_b);
 void	print_bench(t_strategy strategy, double disorder);
+void	sort_three(t_stack **stack_a);
 
 #endif

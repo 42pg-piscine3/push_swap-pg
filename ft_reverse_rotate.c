@@ -6,7 +6,7 @@
 /*   By: mdass-ka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 18:27:53 by mdass-ka          #+#    #+#             */
-/*   Updated: 2026/11/03 15:22:18 by mdass-ka         ###   ########.fr       */
+/*   Updated: 2026/11/04 13:08:59 by mdass-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,18 @@ static void	reverse_rotate(t_stack **stack)
 void	rra(t_stack **stack_a)
 {
 	reverse_rotate(stack_a);
+	ft_printf("rra\n");
 }
 
 void	rrb(t_stack **stack_b)
 {
 	reverse_rotate(stack_b);
+	ft_printf("rrb\n");
 }
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);
+	ft_printf("rrr\n");
 }

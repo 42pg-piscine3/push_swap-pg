@@ -6,7 +6,7 @@
 /*   By: mdass-ka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 18:11:15 by mdass-ka          #+#    #+#             */
-/*   Updated: 2026/11/03 13:59:06 by mdass-ka         ###   ########.fr       */
+/*   Updated: 2026/11/04 13:08:07 by mdass-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ static void	push(t_stack **dest, t_stack **src)
 void	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_a, stack_b);
+	ft_printf("pa\n");
 }
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_b, stack_a);
+	ft_printf("pb\n");
 }

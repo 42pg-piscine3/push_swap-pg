@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42penang.edu.m    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 12:00:00 by joshtan           #+#    #+#             */
-/*   Updated: 2026/11/06 14:00:00 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/11/07 12:27:59 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 // Only one strategy selector may be given.
 static int	set_strategy(t_params *params, t_strategy strategy)
 {
-	if (params->strategy_set)
+	if (params->flag_strat)
 		return (-1);
 	params->strategy = strategy;
-	params->strategy_set = 1;
+	params->flag_strat = 1;
 	return (1);
 }
 

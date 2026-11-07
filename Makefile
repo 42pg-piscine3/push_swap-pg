@@ -1,7 +1,7 @@
 NAME		= push_swap
 
 CC			= cc
-CFLAGS		= -Wall -Wextra
+CFLAGS		= -Wall -Wextra -Werror
 INCLUDES	= -I . -I $(LIBFT_DIR) -I $(LIBFT_EXT_DIR)
 
 LIBFT_DIR	= libft
@@ -10,22 +10,25 @@ LIBFT		= $(LIBFT_DIR)/libft.a
 LIBFT_EXT_DIR	= libft_ext
 LIBFT_EXT		= $(LIBFT_EXT_DIR)/libft_ext.a
 
-SRCS		= push_swap.c \
-			  ft_parse.c \
-			  ft_param.c \
-			  ft_stack_utils.c \
-			  ft_disorder.c \
-			  ft_strategy.c \
-			  ft_bench.c \
-			  ft_swap.c \
-			  ft_push.c \
-			  ft_rotate.c \
-			  ft_reverse_rotate.c \
-			  ft_printf.c \
-			  ft_printf_utilities.c \
-			  ft_printf_ptr.c
+SRCS        = ft_bench.c \
+	            ft_disorder.c \
+	            ft_param.c \
+	            ft_parse.c \
+	            ft_printf.c \
+	            ft_printf_double.c \
+	            ft_printf_ptr.c \
+	            ft_printf_utilities.c \
+	            ft_push.c \
+	            ft_reverse_rotate.c \
+	            ft_rotate.c \
+	            ft_sort.c \
+	            ft_stack_size.c \
+	            ft_stack_utils.c \
+	            ft_strategy.c \
+	            ft_swap.c \
+	            push_swap.c
 
-OBJS		= $(SRCS:.c=.o)
+OBJS 		= $(SRCS:.c=.o)
 
 all: $(NAME)
 
