@@ -6,10 +6,9 @@
 /*   By: joshtan <joshtan@student.42penang.edu.m    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 17:46:22 by mdass-ka          #+#    #+#             */
-/*   Updated: 2026/11/07 12:27:16 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/11/11 14:15:47 by mdass-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -19,6 +18,7 @@
 # include <stdarg.h>
 # include "libft.h"
 # include "libft_ext.h"
+# include "ft_printf.h"
 
 // Adaptive strategy disorder thresholds: low < 0.2 <= medium < 0.5 <= high
 # define ADAPTIVE_LOW 0.2
@@ -38,7 +38,8 @@ typedef enum e_strategy
 	STRAT_COMPLEX
 }	t_strategy;
 
-// Set strategy_set is set once a flag is set. It prevents multiple strategy inputs.
+/* Set strategy_set is set once a flag is set. It prevents multiple strategy
+inputs.*/
 typedef struct s_params
 {
 	t_strategy	strategy;
@@ -66,15 +67,6 @@ int		parse_flag(char *arg, t_params *params);
 int		stack_add_back(t_stack **stack, int value);
 int		stack_contains(t_stack *stack, int value);
 void	stack_free(t_stack **stack);
-
-int		ft_putchar(char c);
-int		ft_putstr(char *str);
-int		ft_putnbr(int nb);
-int		ft_put_unsigned_nbr(unsigned int n);
-int		ft_puthex(unsigned int n, int is_upper);
-int		ft_putptr(void *ptr);
-int		ft_putdouble(double num, int precision);
-int		ft_printf(const char *str, ...);
 
 void	sort_simple(t_stack **stack_a, t_stack **stack_b);
 void	sort_medium(t_stack **stack_a, t_stack **stack_b);

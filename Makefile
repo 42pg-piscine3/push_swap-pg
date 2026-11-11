@@ -2,7 +2,7 @@ NAME		= push_swap
 
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
-INCLUDES	= -I . -I $(LIBFT_DIR) -I $(LIBFT_EXT_DIR)
+INCLUDES	= -I . -I $(LIBFT_DIR) -I $(LIBFT_EXT_DIR) -I $(PRINTF_DIR)
 
 LIBFT_DIR	= libft
 LIBFT		= $(LIBFT_DIR)/libft.a
@@ -10,14 +10,13 @@ LIBFT		= $(LIBFT_DIR)/libft.a
 LIBFT_EXT_DIR	= libft_ext
 LIBFT_EXT		= $(LIBFT_EXT_DIR)/libft_ext.a
 
+PRINTF_DIR		= printf
+PRINTF			= $(PRINTF_DIR)/ft_printf.a
+
 SRCS        = ft_bench.c \
 	            ft_disorder.c \
 	            ft_param.c \
 	            ft_parse.c \
-	            ft_printf.c \
-	            ft_printf_double.c \
-	            ft_printf_ptr.c \
-	            ft_printf_utilities.c \
 	            ft_push.c \
 	            ft_reverse_rotate.c \
 	            ft_rotate.c \
@@ -43,8 +42,8 @@ all: $(NAME)
 #               (ft_strcmp, ft_ws_to_space, ft_free_split). Placed before
 #               $(LIBFT) in case its functions ever call libft ones
 #   -o $(NAME)  name of the output program (otherwise cc writes a.out)
-$(NAME): $(OBJS) $(LIBFT_EXT) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_EXT) $(LIBFT) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT_EXT) $(LIBFT) $(PRINTF)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_EXT) $(LIBFT) $(PRINTF) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -52,17 +51,22 @@ $(LIBFT):
 $(LIBFT_EXT):
 	$(MAKE) -C $(LIBFT_EXT_DIR)
 
-%.o: %.c push_swap.h $(LIBFT_DIR)/libft.h $(LIBFT_EXT_DIR)/libft_ext.h
+$(PRINTF):
+	$(MAKE) -C $(PRINTF_DIR)
+
+%.o: %.c push_swap.h $(LIBFT_DIR)/libft.h $(LIBFT_EXT_DIR)/libft_ext.h $(PRINTF_DIR)/ft_printf.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(MAKE) -C $(LIBFT_EXT_DIR) clean
+	$(MAKE) -C $(PRINTF_DIR) clean
 	rm -f $(OBJS)
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(MAKE) -C $(LIBFT_EXT_DIR) fclean
+	$(MAKE) -C $(PRINTF_DIR) fclean
 	rm -f $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: mdass-ka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 13:00:40 by mdass-ka          #+#    #+#             */
-/*   Updated: 2026/11/04 13:06:24 by mdass-ka         ###   ########.fr       */
+/*   Updated: 2026/11/11 14:11:24 by mdass-ka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	sort_three(t_stack **stack_a)
 	first = (*stack_a)->value;
 	second = (*stack_a)->next->value;
 	third = (*stack_a)->next->next->value;
-
 	if (first > second && second < third && first < third)
 		sa(stack_a);
 	else if (first > second && second > third)
